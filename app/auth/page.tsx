@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/check_login_user";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -28,7 +31,7 @@ function Page() {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
           setPrint("Account created successfully!");
-            await signInWithEmailAndPassword(auth, email, password);
+          await signInWithEmailAndPassword(auth, email, password);
         } catch (createError: any) {
           handleFirebaseError(createError.code);
         }
@@ -56,6 +59,14 @@ function Page() {
         setPrint("Something went wrong. Try again.");
     }
   };
+
+  const { loading, user } = useAuth()
+  const router = useRouter()
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/protected")
+    }
+  }, [loading, user, router])
 
   return (
     <div className="flex justify-center items-center h-screen">
