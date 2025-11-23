@@ -1,12 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "@/hooks/check_login_user";
 import Logout from "@/components/logout";
+import {useRouter} from "next/navigation";
 
 function Page() {
   const { user, loading } = useAuth();
 
+  const router = useRouter()
+
+ useEffect(() => {
+    // Only redirect if loading is complete and user is not logged in
+    if (!loading && !user) {
+      router.replace("/auth");
+    }
+  }, [user, loading, router]); 
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center">
