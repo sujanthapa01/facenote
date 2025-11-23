@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/check_login_user";
-import {handleFirebaseError} from "@/errors/firebase_Errros"
+import {handleFirebaseError} from "@/errors/firebase_Err"
 import {GoogleProvider} from "@/components/GoogleProvider"
 
 import {
