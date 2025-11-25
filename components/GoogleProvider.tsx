@@ -29,7 +29,7 @@ export const GoogleProvider: React.FC = () => {
                 className="flex items-center justify-center bg-white border-2 border-gray-300 rounded-xl py-2 px-6 hover:shadow-lg transition duration-200 ease-in-out"
             >
 
-            <Image src="/images/google.png" alt="" width={32} height={32}/>
+                <Image src="/google.png" alt="google" width={42} height={42} className='mr-4' />
 
                 <span className="text-gray-800 font-semibold">Sign in with Google</span>
             </button>

@@ -43,7 +43,7 @@ function Page() {
 
   return (
     <div className="flex justify-center items-center h-screen flex-col">
-      <div className="flex flex-col gap-4 items-center justify-center h-44">
+      {/* <div className="flex flex-col gap-4 items-center justify-center h-44">
         {print && <p className="text-red-400">{print}</p>}
 
         <input
@@ -67,14 +67,14 @@ function Page() {
           {"--->"}
         </button>
 
-      </div>
+      </div> */}
 
 <div className="flex flex-col gap-4 items-center justify-center">
 
-        <div onClick={() => {router.replace("/auth/create-account")}} className=" mt-24 font-thin italic cursor-pointer underline hover:text-blue-600 duration-200 hover:underline">
+        {/* <div onClick={() => {router.replace("/auth/create-account")}} className=" mt-24 font-thin italic cursor-pointer underline hover:text-blue-600 duration-200 hover:underline">
           create account
         </div>
-       <span className="italic font-bold text-xl">or</span>
+       <span className="italic font-bold text-xl">or</span> */}
         <div>
           <GoogleProvider/>
         </div>

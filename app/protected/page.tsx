@@ -3,19 +3,19 @@
 import React, { useEffect } from "react";
 import { useAuth } from "@/hooks/check_login_user";
 import Logout from "@/components/logout";
-import {useRouter} from "next/navigation";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const { user, loading } = useAuth();
+  const router = useRouter();
 
-  const router = useRouter()
-
- useEffect(() => {
-    // Only redirect if loading is complete and user is not logged in
+  useEffect(() => {
     if (!loading && !user) {
       router.replace("/auth");
     }
-  }, [user, loading, router]); 
+  }, [user, loading, router]);
+
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -33,8 +33,20 @@ function Page() {
               Welcome 👋
             </h1>
 
-            <p className="text-gray-300 mb-6">Logged in as:  
-              <span className="text-blue-400 font-semibold"> {user.email}</span>
+            <p className="text-gray-300 mb-6">
+              Logged in as:{" "}
+              <span className="text-blue-400 font-semibold">
+                {user.emailVerified ? "Verified" : "Not Verified"}{" "}
+                -
+                <Image
+                  src={user.photoURL ?? "/google.png"}
+                  alt="photo"
+                  height={42}
+                  width={42}
+                  className="inline-block rounded-full mx-2"
+                />
+                {user.email}
+              </span>
             </p>
 
             <Logout />
