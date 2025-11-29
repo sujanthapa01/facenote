@@ -76,7 +76,7 @@ function Page() {
         </div>
        <span className="italic font-bold text-xl">or</span> */}
         <div>
-          <GoogleProvider/>
+         {!user?  <GoogleProvider/> : ""}
         </div>
 </div>
     </div>
